@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css'
 
@@ -67,7 +69,7 @@ const FamilyList = () => {
     const columns = [{
         Header: 'ID',
         accessor: '_id',
-        Cell: ({ row }) => <a href={`/families-list/${row._id}/members`}>{row._id}</a>
+        Cell: ({ row }) => <Link to={`/families-list/${row._id}/members`}>{row._id} </Link>
     },
     {
         Header: 'Family Name',
@@ -79,7 +81,7 @@ const FamilyList = () => {
     },
     {
         Header: 'Action',
-        Cell: (row) => <button onClick={() => handleDeleteAction(row.original)}>DELETE</button>
+        Cell: (row) => <Button variant="outlined" color="secondary" onClick={() => handleDeleteAction(row.original)}>DELETE </Button>
     }];
 
     const handleFamilyCreate = () => {
@@ -88,7 +90,7 @@ const FamilyList = () => {
 
     return (
         <>
-            <button onClick={handleFamilyCreate}>Create Family</button>
+            <Button variant="contained" color="primary" onClick={handleFamilyCreate}>Create Family</Button>
             <div style={{ height: 400, width: '100%' }}>
                 <ReactTable
                     data={familyArr}

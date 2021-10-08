@@ -63,7 +63,7 @@ const MembersList = () => {
                 {familyMembersWithChildrensArr.length ? familyMembersWithChildrensArr.map((memberObj) => {
                     return (
                         <div className="_treeRoot d_f" key={memberObj._id}>
-                            < div className="_treeBranch hasChildren" >
+                            < div className={`_treeBranch ${memberObj.childrens && memberObj.childrens.length ? 'hasChildren' : null}`} >
                                 < div className="_treeRaw d_f" >
                                     < div className="_treeLeaf d_f" >
                                         < div className="t_Data d_f" onClick={() => handleNodeClick(memberObj)} >
