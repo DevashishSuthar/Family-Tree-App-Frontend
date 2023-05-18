@@ -1,5 +1,17 @@
 import React, { useRef, useState } from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core';
+import {
+    Button,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    TextField,
+    FormControl,
+    FormLabel,
+    RadioGroup,
+    FormControlLabel,
+    Radio,
+} from '@material-ui/core';
 import { useFormik } from 'formik';
 
 import { JPEG, JPG, PNG } from '../../constants/FileExtensionsConstant';
@@ -73,55 +85,55 @@ const CreateMember = ({ handleClose, isOpen, selectedMemberData, getMembersOfFam
             <Dialog open={isOpen} >
                 <DialogTitle>Create Member Form</DialogTitle>
                 <DialogContent>
-                    <label htmlFor="porfilePhoto">Select Profile Photo</label>
-                    <input type="file" id="profilePhoto" ref={imageFileRef} onChange={handleImageFileChange} />
-                    <br />
-                    <label htmlFor="name">Name</label>
-                    <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        onChange={handleChange}
-                        value={values.name}
-                    />
-                    <br />
-                    {errors.name && touched.name && (
-                        <span className="error-span">{errors.name}</span>
-                    )}
-                    <br />
-                    <div>
-                        <label htmlFor="gender">Gender</label>
-                        <label htmlFor="male" >
-                            <input
-                                id="male"
-                                name="gender"
-                                type="radio"
-                                onChange={handleChange}
-                                value="MALE"
-                            />
-                            Male
-                        </label>
-                        <label htmlFor="female" >
-                            <input
-                                id="female"
-                                name="gender"
-                                type="radio"
-                                onChange={handleChange}
-                                value="FEMALE"
-                            />
-                            Female
-                        </label>
-                        <br />
-                        {errors.gender && touched.gender && (
-                            <span className="error-span">{errors.gender}</span>
+                    <div className="form-group">
+                        <label htmlFor="porfilePhoto">Select Profile Photo</label>
+                        <input type="file" id="profilePhoto" ref={imageFileRef} onChange={handleImageFileChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <TextField
+                            id="name"
+                            name="name"
+                            label="Name"
+                            variant="outlined"
+                            value={values.name}
+                            onChange={handleChange}
+                            fullWidth
+                        />
+                        {errors.name && touched.name && (
+                            <span className="error-span">{errors.name}</span>
                         )}
+                    </div>
+                    <div className="radio-group">
+                        <FormControl>
+                            <FormLabel>Gender</FormLabel>
+                            <RadioGroup row>
+                                <FormControlLabel
+                                    value="MALE"
+                                    name="gender"
+                                    control={<Radio color="primary" />}
+                                    label="Male"
+                                    onChange={handleChange}
+                                />
+                                <FormControlLabel
+                                    value="FEMALE"
+                                    name="gender"
+                                    control={<Radio color="primary" />}
+                                    label="Female"
+                                    onChange={handleChange}
+                                />
+                            </RadioGroup>
+                            {errors.gender && touched.gender && (
+                                <span className="error-span">{errors.gender}</span>
+                            )}
+                        </FormControl>
                     </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button variant="outlined" onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleSubmit} color="primary" autoFocus>
+                    <Button variant="contained" onClick={handleSubmit} color="primary" autoFocus>
                         Submit
                     </Button>
                 </DialogActions>

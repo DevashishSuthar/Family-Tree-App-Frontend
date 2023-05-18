@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 15px;
 }
 
 .App-logo {
@@ -32,6 +33,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -125,7 +127,8 @@ section {
   z-index: 0;
 }
 
-._treeRaw.active, ._treeRoot.active {
+._treeRaw.active,
+ ._treeRoot.active {
   z-index: 10;
 }
 
@@ -198,12 +201,14 @@ section {
   overflow: hidden;
 }
 
-.t_Data:hover, .t_Data.active {
+.t_Data:hover,
+ .t_Data.active {
   background-color: var(--blue);
   color: var(--white);
 }
 
-.t_Data:hover ._readMore, .t_Data.active ._readMore {
+.t_Data:hover ._readMore, 
+.t_Data.active ._readMore {
   /* background-image: url('../images/moreWhite.svg'); */
 }
 
@@ -285,7 +290,8 @@ section {
 
 /* ==============  Mapping Cell/children  ============== */
 
-.hasChild>._treeRaw::after, .hasChildren>._treeRaw::after {
+.hasChild>._treeRaw::after,
+ .hasChildren>._treeRaw::after {
   content: '';
   width: 1px;
   height: var(--borderGap);
@@ -303,11 +309,13 @@ section {
   padding-top: var(--borderGap);
 }
 
-.hasChildren>._NewBranch>._treeRoot::before, .hasChildren>._NewBranch>._treeRoot::after {
+.hasChildren>._NewBranch>._treeRoot::before,
+ .hasChildren>._NewBranch>._treeRoot::after {
   display: block;
 }
 
-._NewBranch>._treeRoot::before, ._NewBranch>._treeRoot::after {
+._NewBranch>._treeRoot::before,
+ ._NewBranch>._treeRoot::after {
   display: none;
   content: '';
   position: absolute;
@@ -326,7 +334,8 @@ section {
   left: 0;
 }
 
-._NewBranch>._treeRoot:first-child::after, ._NewBranch>._treeRoot:last-child::before {
+._NewBranch>._treeRoot:first-child::after,
+._NewBranch>._treeRoot:last-child::before {
   display: none;
 }
 
@@ -342,4 +351,70 @@ section {
 .profile-photo {
   height: 50px;
   width: 50px
+}
+
+.table-responsive {
+  margin-top: 15px;
+}
+
+.table-responsive .MuiTableContainer-root {
+  box-shadow: 0px 2px 15px rgba(10, 41, 69, 0.2);
+}
+
+.table-responsive .MuiTableContainer-root table {
+  white-space: nowrap;
+}
+
+table .MuiTableCell-root,
+table .MuiTableCell-root {
+  line-height: normal;
+  font-size: 15px;
+  color: #323232;
+  border-bottom: 1px solid #ececec;
+  letter-spacing: 0;
+  vertical-align: middle;
+  padding: 15px 10px;
+}
+
+table .MuiTableCell-root a {
+  color: #323232;
+  text-decoration: none;
+}
+
+table .MuiTableCell-root a:hover {
+  color: #838383;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #323232;
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.radio-group {
+  margin-top: 10px;
+}
+
+.MuiDialog-paper {
+  width: 600px !important;
+}
+
+.error-span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+._loading_overlay_overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 9 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }

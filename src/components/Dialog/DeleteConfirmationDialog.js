@@ -14,10 +14,10 @@ const DeleteConfirmationDialog = ({ handleClose, handleSubmit, isOpen }) => {
                     <DialogContentText>Are you sure you want to delete this family?</DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button variant="outlined" onClick={handleClose} color="secondary">
                         no
                     </Button>
-                    <Button onClick={handleSubmit} color="primary" autoFocus>
+                    <Button variant="contained" onClick={handleSubmit} color="secondary" autoFocus>
                         yes
                     </Button>
                 </DialogActions>

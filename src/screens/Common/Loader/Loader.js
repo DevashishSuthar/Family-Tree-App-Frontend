@@ -9,14 +9,12 @@ const Loader = (props) => {
     return (
         <Fragment>
             <OverlayLoader active={isLoading}
-                styles={{
-                    overlay: (base) => ({
-                        ...base,
-                        background: 'rgba(0, 0, 0, 0.6)',
-                        zIndex: 1400
-                    })
-                }}
-                spinner={<BeatLoader size={30} margin={2} color={'#9d48be'} />}
+                // styles={{
+                //     overlay: (base) => ({
+                //         ...base,
+                //     })
+                // }}
+                spinner={<BeatLoader size={30} margin={2} color={'#fff'} />}
                 {...props}
             />
         </Fragment>

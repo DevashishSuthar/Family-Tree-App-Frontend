@@ -1,5 +1,17 @@
 import React from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core';
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from "@material-ui/core";
 import { useFormik } from 'formik';
 
 import { createFamily } from '../../services/FamilyService';
@@ -21,8 +33,7 @@ const CreateFamily = ({ handleClose, getAllFamiliesAction, isOpen }) => {
         }
       }
       handleClose();
-    } catch (error) {
-    }
+    } catch (error) { }
   };
 
   const initialValues = {
@@ -44,65 +55,66 @@ const CreateFamily = ({ handleClose, getAllFamiliesAction, isOpen }) => {
       <Dialog open={isOpen} >
         <DialogTitle>Create Family Form</DialogTitle>
         <DialogContent>
-          <label htmlFor="familyName">Family Name</label>
-          <input
-            id="familyName"
-            name="familyName"
-            type="text"
-            onChange={handleChange}
-            value={values.familyName}
-          />
-          <br />
-          {errors.familyName && touched.familyName && (
-            <span className="error-span">{errors.familyName}</span>
-          )}
-          <br />
-          <label htmlFor="familyHeadPersonName">Family Head Person Name</label>
-          <input
-            id="familyHeadPersonName"
-            name="familyHeadPersonName"
-            type="text"
-            onChange={handleChange}
-            value={values.familyHeadPersonName}
-          />
-          <br />
-          {errors.familyHeadPersonName && touched.familyHeadPersonName && (
-            <span className="error-span">{errors.familyHeadPersonName}</span>
-          )}
-          <br />
-          <div>
-            <label htmlFor="gender">Gender</label>
-            <label htmlFor="male" >
-              <input
-                id="male"
-                name="gender"
-                type="radio"
-                onChange={handleChange}
-                value="MALE"
-              />
-              Male
-            </label>
-            <label htmlFor="female" >
-              <input
-                id="female"
-                name="gender"
-                type="radio"
-                onChange={handleChange}
-                value="FEMALE"
-              />
-              Female
-            </label>
-            <br />
-            {errors.gender && touched.gender && (
-              <span className="error-span">{errors.gender}</span>
+          <div className="form-group">
+            <label htmlFor="familyName">Family Name</label>
+            <TextField
+              id="familyName"
+              label="Name"
+              variant="outlined"
+              value={values.familyName}
+              onChange={handleChange}
+              fullWidth
+            />
+            {errors.familyName && touched.familyName && (
+              <span className="error-span">{errors.familyName}</span>
             )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="familyHeadPersonName">
+              Family Head Person Name
+            </label>
+            <TextField
+              id="familyHeadPersonName"
+              label="Head Person Name"
+              variant="outlined"
+              value={values.familyHeadPersonName}
+              onChange={handleChange}
+              fullWidth
+            />
+            {errors.familyHeadPersonName && touched.familyHeadPersonName && (
+              <span className="error-span">{errors.familyHeadPersonName}</span>
+            )}
+          </div>
+          <div className="radio-group">
+            <FormControl>
+              <FormLabel>Gender</FormLabel>
+              <RadioGroup row>
+                <FormControlLabel
+                  value="MALE"
+                  name="gender"
+                  control={<Radio color="primary" />}
+                  label="Male"
+                  onChange={handleChange}
+                />
+                <FormControlLabel
+                  value="FEMALE"
+                  name="gender"
+                  control={<Radio color="primary" />}
+                  label="Female"
+                  onChange={handleChange}
+                />
+              </RadioGroup>
+              {errors.gender && touched.gender && (
+                <span className="error-span">{errors.gender}</span>
+              )}
+            </FormControl>
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button variant="outlined" onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} color="primary" autoFocus>
+          <Button variant="contained" onClick={handleSubmit} color="primary" autoFocus>
             Submit
           </Button>
         </DialogActions>
