@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Tooltip } from '@material-ui/core';
 
 import CreateMember from './CreateMember';
 import { REACT_APP_BASE_URL } from '../../configs/EnvConfig';
@@ -63,21 +64,23 @@ const MembersList = () => {
                 {familyMembersWithChildrensArr.length ? familyMembersWithChildrensArr.map((memberObj) => {
                     return (
                         <div className="_treeRoot d_f" key={memberObj._id}>
-                            < div className={`_treeBranch ${memberObj.childrens && memberObj.childrens.length ? 'hasChildren' : null}`} >
-                                < div className="_treeRaw d_f" >
-                                    < div className="_treeLeaf d_f" >
-                                        < div className="t_Data d_f" onClick={() => handleNodeClick(memberObj)} >
-                                            <img src={memberObj.profilePhoto ? `${REACT_APP_BASE_URL}/${memberObj.profilePhoto}` : IMG_DEFAULT_AVATAR} alt="img" className="profile-photo" />
-                                            <p className="shortName">{memberObj.name}</p>
-                                        </div >
+                            <div className={`_treeBranch ${memberObj.childrens && memberObj.childrens.length ? 'hasChildren' : null}`} >
+                                <div className="_treeRaw d_f" >
+                                    <div className="_treeLeaf d_f" >
+                                        <Tooltip title="Click to add its children" placement="top" arrow>
+                                            <div className="t_Data d_f" onClick={() => handleNodeClick(memberObj)} >
+                                                <img src={memberObj.profilePhoto ? `${REACT_APP_BASE_URL}/${memberObj.profilePhoto}` : IMG_DEFAULT_AVATAR} alt="img" className="profile-photo" />
+                                                <p className="shortName">{memberObj.name}</p>
+                                            </div >
+                                        </Tooltip>
                                     </div>
                                 </div >
                                 {memberObj.childrens && memberObj.childrens.length ?
-                                    (< div className="_NewBranch d_f" > {
+                                    (<div className="_NewBranch d_f" > {
                                         renderFamilyChildrenRecursively(memberObj.childrens)
                                     } </div>) : null
                                 }
-                            </div >
+                            </div>
                         </div>)
                 }) : null}
             </>
@@ -94,9 +97,9 @@ const MembersList = () => {
                             <div className="_treeRoot d_f">
                                 <div className="_treeBranch hasChildren">
                                     {renderFamilyChildrenRecursively(membersWithChildrensArr)}
-                                </div >
+                                </div>
                             </div>
-                        </div >
+                        </div>
                     </div>
                 </section >) : null
             }
